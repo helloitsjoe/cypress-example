@@ -1,0 +1,11 @@
+:global .App {
+  &-form {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-loading {
+    color: blueviolet;
+  }
+}
