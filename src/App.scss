@@ -1,11 +1,26 @@
-:global .App {
-  &-form {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
+:global {
+  .active {
+    font-style: italic;
+    font-variant: small-caps;
   }
 
-  &-loading {
-    color: blueviolet;
+  .nav {
+    display: flex;
+  }
+
+  .link {
+    margin: 5px;
+  }
+
+  .App {
+    &-form {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-loading {
+      color: blueviolet;
+    }
   }
 }
