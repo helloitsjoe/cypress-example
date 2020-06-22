@@ -62,14 +62,47 @@ const StarWars = () => {
       <input placeholder="Search" onChange={e => setSearch(e.target.value)} />
       <button type="submit">Submit</button>
       {state.status === LOADING && 'Loading...'}
-      {state.data && <Component {...state.data.results[currentIndex]} />}
+      {state.data && (
+        <Display
+          data={state.data.results}
+          currentIndex={currentIndex}
+          onRequestNext={() => setCurrentIndex(i => i + 1)}
+          onRequestPrev={() => setCurrentIndex(i => i - 1)}
+        >
+          <Component {...state.data.results[currentIndex]} />
+        </Display>
+      )}
       {state.status === ERROR && `Error: ${state.errorMessage}`}
       {state.data && <pre>{JSON.stringify(state.data, null, 4)}</pre>}
     </form>
   );
 };
 
-export const Display = ({ children }) => <div className="result">{children}</div>;
+export const Display = ({
+  children,
+  onRequestNext,
+  onRequestPrev,
+  currentIndex = 0,
+  data = [],
+}) => (
+  <div className="result">
+    {children}
+    <div className="result-nav">
+      {data.length > 1 && currentIndex > 0 && (
+        <button type="button" onClick={onRequestPrev}>
+          Previous
+        </button>
+      )}
+      <button
+        type="button"
+        disabled={data.length <= 1 || currentIndex >= data.length - 1}
+        onClick={onRequestNext}
+      >
+        Next
+      </button>
+    </div>
+  </div>
+);
 
 export const Person = ({ name, height, mass }) => {
   return (

@@ -16,6 +16,11 @@
     border: 1px solid black;
   }
 
+  .result-nav {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   .App {
     &-form {
       width: 200px;

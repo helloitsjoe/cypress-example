@@ -5311,6 +5311,10 @@ jest-serializer@^26.0.0:
   dependencies:
     graceful-fs "^4.2.4"
 
+jest-simple-config@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/jest-simple-config/-/jest-simple-config-0.2.4.tgz#fae6ff0e75b3abab98ba6fa9b0007126406fcd64"
+
 jest-snapshot@^26.0.1:
   version "26.0.1"
   resolved "https://registry.yarnpkg.com/jest-snapshot/-/jest-snapshot-26.0.1.tgz#1baa942bd83d47b837a84af7fcf5fd4a236da399"
