@@ -1,5 +1,7 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { fetchUser } from './services';
+import { fetchUser } from './utils';
 
 const IDLE = 'IDLE';
 const LOADING = 'LOADING';
@@ -16,7 +18,7 @@ const fetchReducer = (s = initialState, a) => {
   const { type, errorMessage, data } = a;
   return {
     [LOADING]: { ...s, status: LOADING, data: null, errorMessage: '' },
-    [SUCCESS]: { ...s, status: SUCCESS, data: JSON.stringify(data, null, 4), errorMessage: '' },
+    [SUCCESS]: { ...s, status: SUCCESS, data, errorMessage: '' },
     [ERROR]: { ...s, status: ERROR, data: null, errorMessage },
   }[type];
 };
@@ -24,6 +26,7 @@ const fetchReducer = (s = initialState, a) => {
 const StarWars = () => {
   const [category, setCategory] = React.useState('people');
   const [search, setSearch] = React.useState('');
+  const [currentIndex, setCurrentIndex] = React.useState(0);
   const [state, dispatch] = React.useReducer(fetchReducer, initialState);
 
   const handleSubmit = e => {
@@ -38,22 +41,63 @@ const StarWars = () => {
       });
   };
 
+  const Component = componentMap[category];
+
   return (
     <form className="App-form" onSubmit={handleSubmit}>
       <h1>Star Wars Search!</h1>
       <select id="category" onChange={e => setCategory(e.target.value)}>
         <option value="people">People</option>
-        <option value="films">Films</option>
+        <option value="films" disabled>
+          Films
+        </option>
         <option value="planets">Planets</option>
-        <option value="species">Species</option>
-        <option value="starships">Starships</option>
-        <option value="vehicles">Vehicles</option>
+        <option value="starships" disabled>
+          Starships
+        </option>
+        <option value="vehicles" disabled>
+          Vehicles
+        </option>
       </select>
       <input placeholder="Search" onChange={e => setSearch(e.target.value)} />
       <button type="submit">Submit</button>
-      <pre className="App-loading">{state.status === LOADING ? 'Loading...' : state.data}</pre>
+      {state.status === LOADING && 'Loading...'}
+      {state.data && <Component {...state.data.results[currentIndex]} />}
+      {state.status === ERROR && `Error: ${state.errorMessage}`}
+      {state.data && <pre>{JSON.stringify(state.data, null, 4)}</pre>}
     </form>
   );
+};
+
+export const Display = ({ children }) => <div className="result">{children}</div>;
+
+export const Person = ({ name, height, mass }) => {
+  return (
+    <ul>
+      <li>Name: {name}</li>
+      <li>Height: {height}</li>
+      <li>Mass: {mass}</li>
+    </ul>
+  );
+};
+
+export const Planet = ({ name, diameter, climate, terrain }) => {
+  return (
+    <ul>
+      <li>Name: {name}</li>
+      <li>Diameter: {diameter}</li>
+      <li>Climate: {climate}</li>
+      <li>Terrain: {terrain}</li>
+    </ul>
+  );
+};
+
+const componentMap = {
+  people: Person,
+  planets: Planet,
+  // films: Film,
+  // starships: Starship,
+  // vehicles: Vehicle,
 };
 
 export default StarWars;
