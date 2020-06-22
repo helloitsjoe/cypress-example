@@ -4,9 +4,9 @@ An example frontend app using Cypress for E2E tests, Jest for unit tests, and co
 
 ## TODO
 
-- [ ] Create basic webpack app
+- [x] Create basic webpack app
 - [ ] Cypress coverage report
-- [ ] Jest coverage report
+- [x] Jest coverage report
 - [ ] Combine coverage reports
 - [ ] Buildkite or Travis? Maybe play with CircleCI?
 - [ ] SonarQube?
