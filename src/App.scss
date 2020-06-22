@@ -1,0 +1,35 @@
+:global {
+  .active {
+    font-style: italic;
+    font-variant: small-caps;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .link {
+    margin: 5px;
+  }
+
+  .result {
+    border: 1px solid black;
+  }
+
+  .result-nav {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .App {
+    &-form {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-loading {
+      color: blueviolet;
+    }
+  }
+}
