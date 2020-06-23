@@ -19,7 +19,7 @@ context('Aliasing', () => {
     cy.contains('Home').should('not.have.class', 'active');
     cy.contains('About').should('have.class', 'active');
 
-    // This doesn't add coverage
+    // This doesn't add coverage - why?
     // cy.contains('This is the about page').should('be.visible');
     cy.url().should('include', '/about');
   });
