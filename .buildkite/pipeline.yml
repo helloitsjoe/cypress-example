@@ -3,7 +3,6 @@ steps:
     plugins:
       - docker#v3.5.0:
           image: node:12-alpine
-          volumes:
-            - .:/app
+          mount-buildkite-agent: true
     commands:
       - sh ./.buildkite/test-and-lint.sh
