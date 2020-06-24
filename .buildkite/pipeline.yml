@@ -4,7 +4,7 @@ steps:
       - docker#v3.5.0:
           image: node:12-alpine
       - artifacts#v1.3.0:
-          upload: artifact-test.md
+          upload: artifact-test.txt
           # upload: node_modules.tar.gz
     commands:
       - sh ./.buildkite/test-and-lint.sh
@@ -12,7 +12,7 @@ steps:
   - label: "Test artifact"
     plugins:
       - artifacts#v1.3.0:
-          download: artifact-test.md
+          download: artifact-test.txt
     commands:
       - cat artifact-test.md
   # - label: ":cypress:"

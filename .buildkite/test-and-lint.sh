@@ -1,11 +1,12 @@
-echo '--- :yarn: Installing Dependencies!'
-yarn --frozen-lockfile
+# echo '--- :yarn: Installing Dependencies!'
+# yarn --frozen-lockfile
 
-echo '--- :eslint: Linting!'
-yarn lint
+# echo '--- :eslint: Linting!'
+# yarn lint
 
-echo '--- :jest: Testing!'
-yarn test
+# echo '--- :jest: Testing!'
+# yarn test
 
 # tar -czf node_modules.tar.gz node_modules
-echo 'Testing artifacts' > artifact-test.md
+echo '--- Artifacting!'
+echo 'I am in the artifacts file' > artifact-test.txt
