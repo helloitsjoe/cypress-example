@@ -4,6 +4,7 @@ steps:
       - docker#v3.5.0:
           image: node:12-alpine
           mount-checkout: false
+          volumes: .:/app
     commands:
       - ls -l
       - sh ./.buildkite/test-and-lint.sh
