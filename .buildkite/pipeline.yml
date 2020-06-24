@@ -4,6 +4,6 @@ steps:
       - docker#v3.5.0:
           image: node:12-alpine
           volumes:
-            - "/var/run/docker.sock:/var/run/docker.sock"
+            - .:/app
     commands:
       - sh ./.buildkite/test-and-lint.sh
