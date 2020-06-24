@@ -3,6 +3,19 @@ steps:
     plugins:
       - docker#v3.5.0:
           image: node:12-alpine
+      - artifacts#v1.3.0:
+          upload: artifact-test.md
+          # upload: node_modules.tar.gz
     commands:
-      - ls -l
       - sh ./.buildkite/test-and-lint.sh
+
+  - label: "Test artifact"
+    plugins:
+      - artifacts#v1.3.0:
+          download: artifact-test.md
+    commands:
+      - cat artifact-test.md
+  # - label: ":cypress:"
+  #   plugins:
+  #     - docker-compose#v3.3.0:
+  #         run: cypress
