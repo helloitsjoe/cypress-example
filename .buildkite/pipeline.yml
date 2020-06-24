@@ -1,3 +1,7 @@
 steps:
-  - label: ":jest: Tests"
-    command: yarn && yarn test
+  - label: ":js:"
+    plugins:
+      - docker#3.5:
+          image: node:12-alpine
+    commands:
+      - sh ./.buildkite/test-and-lint.sh
