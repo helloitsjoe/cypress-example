@@ -14,7 +14,7 @@ steps:
       - artifacts#v1.3.0:
           download: artifact-test.txt
     commands:
-      - cat artifact-test.md
+      - cat artifact-test.txt
   # - label: ":cypress:"
   #   plugins:
   #     - docker-compose#v3.3.0:
