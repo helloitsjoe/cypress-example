@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 /// <reference types="cypress" />
 
 context('Aliasing', () => {
@@ -22,5 +21,11 @@ context('Aliasing', () => {
     // This doesn't add coverage - why?
     // cy.contains('This is the about page').should('be.visible');
     cy.url().should('include', '/about');
+  });
+
+  it('Person', () => {
+    cy.get('[data-testid="search"').type('luke');
+    cy.contains(/submit/i).click();
+    cy.contains('Name: Luke Skywalker').should('be.visible');
   });
 });

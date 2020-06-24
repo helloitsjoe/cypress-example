@@ -8,8 +8,8 @@
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch",
     "test": "jest",
-    "test:cy:open": "CYPRESS=true cypress open --project e2e",
-    "test:cy": "CYPRESS=true cypress run --project e2e"
+    "cy:open": "CYPRESS=true cypress open --project e2e",
+    "cy:run": "CYPRESS=true cypress run --project e2e"
   },
   "keywords": [],
   "author": "",

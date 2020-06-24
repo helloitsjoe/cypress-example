@@ -59,7 +59,7 @@ const StarWars = () => {
           Vehicles
         </option>
       </select>
-      <input placeholder="Search" onChange={e => setSearch(e.target.value)} />
+      <input placeholder="Search" data-testid="search" onChange={e => setSearch(e.target.value)} />
       <button type="submit">Submit</button>
       {state.status === LOADING && 'Loading...'}
       {state.data && (
