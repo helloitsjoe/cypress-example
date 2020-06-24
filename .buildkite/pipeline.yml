@@ -5,4 +5,5 @@ steps:
           image: node:12-alpine
           mount-checkout: false
     commands:
+      - ls -l
       - sh ./.buildkite/test-and-lint.sh
