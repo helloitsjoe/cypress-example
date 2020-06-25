@@ -16,6 +16,7 @@ const Nav = () => {
   );
 };
 
+// Cypress doesn't give coverage on this component, but why?
 const About = () => {
   return 'This is the about page!';
 };

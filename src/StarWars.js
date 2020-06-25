@@ -60,6 +60,7 @@ const StarWars = () => {
         </option>
       </select>
       <input placeholder="Search" data-testid="search" onChange={e => setSearch(e.target.value)} />
+      {/* TODO: Add Wookiee checkbox */}
       <button type="submit">Submit</button>
       {state.status === LOADING && 'Loading...'}
       {state.data && (

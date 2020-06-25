@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import StarWars, { Display, Person } from '../StarWars';
 import { fetchUser } from '../utils';
 
@@ -7,6 +7,14 @@ jest.mock('../utils');
 
 const onePerson = { name: 'Joe', height: '73', mass: '80' };
 const twoPerson = { name: 'Missy', height: '62', mass: '60' };
+
+beforeEach(() => {
+  fetchUser.mockResolvedValue({ results: [onePerson, twoPerson] });
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
 test('Display renders children', () => {
   const { getByText } = render(<Display>Hi</Display>);
@@ -82,21 +90,35 @@ describe('Prev/Next', () => {
   });
 });
 
-// Intentionally skip for low coverage
-// describe('StarWars Component', () => {
-//   it('Shows prev/next results', async () => {
-//     fetchUser.mockResolvedValue({ results: [onePerson, twoPerson] });
-//     const { queryByText, findByText } = render(<StarWars />);
-//     fireEvent.click(queryByText(/submit/i));
-//     const joe = await findByText(/Name: Joe/);
-//     expect(joe).toBeTruthy();
-//     fireEvent.click(queryByText(/next/i));
-//     expect(queryByText(/Name: Joe/)).toBe(null);
-//     expect(queryByText(/Name: Missy/)).toBeTruthy();
-//     expect(queryByText(/next/i).disabled).toBe(true);
-//     fireEvent.click(queryByText(/previous/i));
-//     expect(queryByText(/Name: Joe/)).toBeTruthy();
-//     expect(queryByText(/Name: Missy/)).toBe(null);
-//     expect(queryByText(/next/i).disabled).toBe(false);
-//   });
-// });
+// Skip for low coverage
+describe('StarWars Component', () => {
+  it('Shows prev/next results', async () => {
+    const { queryByText, findByText } = render(<StarWars />);
+    fireEvent.click(queryByText(/submit/i));
+    const joe = await findByText(/Name: Joe/);
+    expect(joe).toBeTruthy();
+    fireEvent.click(queryByText(/next/i));
+    expect(queryByText(/Name: Joe/)).toBe(null);
+    expect(queryByText(/Name: Missy/)).toBeTruthy();
+    expect(queryByText(/next/i).disabled).toBe(true);
+    fireEvent.click(queryByText(/previous/i));
+    expect(queryByText(/Name: Joe/)).toBeTruthy();
+    expect(queryByText(/Name: Missy/)).toBe(null);
+    expect(queryByText(/next/i).disabled).toBe(false);
+  });
+
+  it('Sends request', () => {
+    expect(fetchUser).not.toBeCalled();
+    const { queryByText } = render(<StarWars />);
+    fireEvent.click(queryByText(/submit/i));
+    return waitFor(() => {
+      expect(fetchUser).toBeCalledWith({ category: 'people', search: '' });
+    });
+  });
+
+  // it('Sends wookiee request if box is checked', () => {
+  //   expect(fetchUser).not.toBeCalled();
+  //   const { queryByText, findByText } = render(<StarWars />);
+  //   expect(fetchUser).toBeCalledWith('format=wookiee');
+  // });
+});
