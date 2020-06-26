@@ -26,13 +26,14 @@ const fetchReducer = (s = initialState, a) => {
 const StarWars = () => {
   const [category, setCategory] = React.useState('people');
   const [search, setSearch] = React.useState('');
+  const [format, setFormat] = React.useState('');
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [state, dispatch] = React.useReducer(fetchReducer, initialState);
 
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({ type: LOADING });
-    fetchUser({ category, search })
+    fetchUser({ category, search, format })
       .then(data => {
         dispatch({ type: SUCCESS, data });
       })
@@ -60,7 +61,14 @@ const StarWars = () => {
         </option>
       </select>
       <input placeholder="Search" data-testid="search" onChange={e => setSearch(e.target.value)} />
-      {/* TODO: Add Wookiee checkbox */}
+      <label htmlFor="wookiee">
+        I am a wookiee (TODO: de-wookieefy JSON response)
+        <input
+          type="checkbox"
+          name="wookiee"
+          onChange={() => setFormat(f => (f === 'wookiee' ? '' : 'wookiee'))}
+        />
+      </label>
       <button type="submit">Submit</button>
       {state.status === LOADING && 'Loading...'}
       {state.data && (

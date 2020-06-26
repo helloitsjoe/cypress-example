@@ -112,13 +112,17 @@ describe('StarWars Component', () => {
     const { queryByText } = render(<StarWars />);
     fireEvent.click(queryByText(/submit/i));
     return waitFor(() => {
-      expect(fetchUser).toBeCalledWith({ category: 'people', search: '' });
+      expect(fetchUser).toBeCalledWith({ category: 'people', search: '', format: '' });
     });
   });
 
-  // it('Sends wookiee request if box is checked', () => {
-  //   expect(fetchUser).not.toBeCalled();
-  //   const { queryByText, findByText } = render(<StarWars />);
-  //   expect(fetchUser).toBeCalledWith('format=wookiee');
-  // });
+  it('Sends wookiee request if box is checked', () => {
+    expect(fetchUser).not.toBeCalled();
+    const { queryByText, queryByLabelText } = render(<StarWars />);
+    fireEvent.click(queryByLabelText(/wookiee/i));
+    fireEvent.click(queryByText(/submit/i));
+    return waitFor(() => {
+      expect(fetchUser).toBeCalledWith({ category: 'people', search: '', format: 'wookiee' });
+    });
+  });
 });

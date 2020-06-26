@@ -1,6 +1,13 @@
-export const fetchUser = ({ category, search }) => {
+export const fetchUser = ({ category, ...params }) => {
   const baseUrl = `https://swapi.dev/api/${category}/`;
-  const query = search ? `?search=${search}` : '';
+  const queryParams = Object.entries(params)
+    .filter(([, value]) => !!value)
+    .map(([key, value]) => {
+      return `${key}=${value}`;
+    })
+    .join('&');
+
+  const query = queryParams ? `?${queryParams}` : '';
 
   const url = `${baseUrl}${query}`;
 
