@@ -8,6 +8,7 @@
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch",
     "test": "jest",
+    "lint": "eslint",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "cy:open": "CYPRESS=true cypress open --project e2e",
     "cy:run": "CYPRESS=true cypress run --project e2e"
