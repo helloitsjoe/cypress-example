@@ -7,10 +7,10 @@ const Nav = () => {
   return (
     <div className="nav">
       <NavLink exact className="link" activeClassName="link-active" to="/">
-        Home
+        home
       </NavLink>
       <NavLink exact className="link" activeClassName="link-active" to="/about">
-        About
+        about
       </NavLink>
     </div>
   );
