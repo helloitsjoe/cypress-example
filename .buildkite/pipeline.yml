@@ -12,13 +12,13 @@ steps:
 
   - label: ':coverage: Coveralls'
     plugins:
-      # - docker#v3.5.0:
-      #     image: node:12-alpine
-      #     commands:
-      #       - yarn coverage
+      - docker#v3.5.0:
+          image: node:12-alpine
+          commands:
+            - yarn coveralls
       - artifacts#v1.3.0:
           download: coverage/lcov.info
-    command: cat coverage/lcov.info
+    # command: cat coverage/lcov.info
   # - label: ":cypress:"
   #   plugins:
   #     - docker-compose#v3.3.0:
