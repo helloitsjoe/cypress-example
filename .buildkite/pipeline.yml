@@ -10,15 +10,15 @@ steps:
     commands:
       - sh ./.buildkite/test-and-lint.sh
 
-  - label: ':coveralls:'
+  - label: ':coverage: Coveralls'
     plugins:
       # - docker#v3.5.0:
       #     image: node:12-alpine
       #     commands:
       #       - yarn coverage
       - artifacts#v1.3.0:
-          download: lcov.info
-    command: cat lcov.info
+          download: coverage/lcov.info
+    command: cat coverage/lcov.info
   # - label: ":cypress:"
   #   plugins:
   #     - docker-compose#v3.3.0:
