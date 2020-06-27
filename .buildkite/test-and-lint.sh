@@ -6,7 +6,7 @@ yarn lint
 
 echo '--- :jest: Testing!'
 yarn test --coverage
-./coverage/lcov.info | coveralls
+yarn coveralls
 
 # tar -czf node_modules.tar.gz node_modules
 # echo '--- Artifacting!'
