@@ -17,8 +17,8 @@ steps:
       #     commands:
       #       - yarn coverage
       - artifacts#v1.3.0:
-          download: coverage/lcov.info
-    command: cat coverage/lcov.info
+          download: lcov.info
+    command: cat lcov.info
   # - label: ":cypress:"
   #   plugins:
   #     - docker-compose#v3.3.0:
