@@ -1,15 +1,16 @@
 :global {
-  .active {
-    font-style: italic;
-    font-variant: small-caps;
-  }
-
   .nav {
     display: flex;
   }
 
   .link {
-    margin: 5px;
+    margin: 16px;
+    padding: 8px;
+    border: 4px solid white;
+
+    &-active {
+      border: 4px solid turquoise;
+    }
   }
 
   .result {

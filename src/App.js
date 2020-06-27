@@ -6,10 +6,10 @@ import './App.scss';
 const Nav = () => {
   return (
     <div className="nav">
-      <NavLink exact className="link" to="/">
+      <NavLink exact className="link" activeClassName="link-active" to="/">
         Home
       </NavLink>
-      <NavLink exact className="link" to="/about">
+      <NavLink exact className="link" activeClassName="link-active" to="/about">
         About
       </NavLink>
     </div>
