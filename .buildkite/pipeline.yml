@@ -8,7 +8,7 @@ steps:
           # upload: artifact-test.txt
           # upload: node_modules.tar.gz
     commands:
-      - echo 'end_of_record' > coverage/lcov.info
+      - mkdir coverage && echo 'end_of_record' > coverage/lcov.info
       # - sh ./.buildkite/test-and-lint.sh
 
   - label: ':coverage: Coveralls'
