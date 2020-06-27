@@ -24,6 +24,7 @@ export const fetchUser = ({ category, ...params }) => {
       .then(data => JSON.parse(dewookify(data)))
       .catch(err => {
         console.error('error dewookifying', err);
+        throw err;
       });
   });
 };
