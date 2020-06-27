@@ -8,8 +8,7 @@ steps:
           # upload: artifact-test.txt
           # upload: node_modules.tar.gz
     commands:
-      - mkdir coverage && echo 'end_of_record' > coverage/lcov.info
-      # - sh ./.buildkite/test-and-lint.sh
+      - sh ./.buildkite/test-and-lint.sh
 
   - label: ':coverage: Coveralls'
     plugins:
@@ -18,7 +17,7 @@ steps:
       - artifacts#v1.3.0:
           download: coverage/lcov.info
     commands:
-      - yarn coveralls
+      - cat coverage/lcov.info
     # command: cat coverage/lcov.info
   # - label: ":cypress:"
   #   plugins:
