@@ -6,7 +6,7 @@ yarn lint
 
 echo '--- :jest: Testing!'
 yarn test --coverage
-yarn coveralls
+COVERALLS_SERVICE_NAME=buildkite COVERALLS_GIT_BRANCH=coveralls yarn coveralls
 
 # tar -czf node_modules.tar.gz node_modules
 # echo '--- Artifacting!'
