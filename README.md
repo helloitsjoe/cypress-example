@@ -8,5 +8,5 @@ An example frontend app using Cypress for E2E tests, Jest for unit tests, and co
 - [ ] Cypress coverage report
 - [x] Jest coverage report
 - [ ] Combine coverage reports
-- [ ] Buildkite or Travis? Maybe play with CircleCI?
-- [ ] SonarQube?
+- [x] Buildkite or Travis? Maybe play with CircleCI?
+- [x] ~Sonarqube~ Coveralls
