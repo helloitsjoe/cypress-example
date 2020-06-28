@@ -9,7 +9,7 @@
     "watch": "webpack --mode development --watch",
     "test": "jest",
     "lint": "eslint",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "coveralls": "COVERALLS_SERVICE_NAME=buildkite COVERALLS_GIT_BRANCH=coveralls cat ./coverage/lcov.info | coveralls",
     "cy:open": "CYPRESS=true cypress open --project e2e",
     "cy:run": "CYPRESS=true cypress run --project e2e"
   },
