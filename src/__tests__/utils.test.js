@@ -6,3 +6,8 @@ test('fetch util combines params', async () => {
   expect(window.fetch).toBeCalledWith('https://swapi.dev/api/foo/?search=bar&format=baz');
   jest.clearAllMocks();
 });
+
+// test('dewookify fixes wookiee response', () => {
+//   const res =
+
+// })

@@ -35,6 +35,7 @@ const StarWars = () => {
     dispatch({ type: LOADING });
     fetchUser({ category, search, format })
       .then(data => {
+        console.log(`data:`, data);
         dispatch({ type: SUCCESS, data });
       })
       .catch(err => {
@@ -62,7 +63,7 @@ const StarWars = () => {
       </select>
       <input placeholder="Search" data-testid="search" onChange={e => setSearch(e.target.value)} />
       <label htmlFor="wookiee">
-        I am a wookiee (TODO: de-wookieefy JSON response)
+        I am a wookiee
         <input
           type="checkbox"
           name="wookiee"
