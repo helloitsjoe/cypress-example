@@ -9,16 +9,6 @@ steps:
           # upload: node_modules.tar.gz
     commands:
       - sh ./.buildkite/test-and-lint.sh
-
-  - label: ':coverage: Coveralls'
-    plugins:
-      - docker#v3.5.0:
-          image: node:12-alpine
-      - artifacts#v1.3.0:
-          download: coverage/lcov.info
-    commands:
-      - cat coverage/lcov.info
-    # command: cat coverage/lcov.info
   # - label: ":cypress:"
   #   plugins:
   #     - docker-compose#v3.3.0:
