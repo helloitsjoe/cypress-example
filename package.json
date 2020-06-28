@@ -8,6 +8,8 @@
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch",
     "test": "jest",
+    "lint": "eslint",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "cy:open": "CYPRESS=true cypress open --project e2e",
     "cy:run": "CYPRESS=true cypress run --project e2e"
   },
@@ -30,6 +32,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "babel-react-simple": "^1.0.2",
+    "coveralls": "^3.1.0",
     "css-loader": "^3.6.0",
     "cypress": "^4.8.0",
     "eslint": "7.2",

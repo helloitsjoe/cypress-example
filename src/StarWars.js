@@ -35,7 +35,6 @@ const StarWars = () => {
     dispatch({ type: LOADING });
     fetchUser({ category, search, format })
       .then(data => {
-        console.log(`data:`, data);
         dispatch({ type: SUCCESS, data });
       })
       .catch(err => {
