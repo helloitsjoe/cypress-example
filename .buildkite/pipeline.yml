@@ -4,7 +4,7 @@ steps:
       #   - docker#v3.5.0:
       #       image: node:12-alpine
       - artifacts#v1.3.0:
-          upload: coverage/lcov.info
+          upload: coverage/unit/lcov.info
           # upload: artifact-test.txt
           # upload: node_modules.tar.gz
     commands:

@@ -10,16 +10,15 @@ context('Aliasing', () => {
   });
 
   it('Navigation', () => {
-    cy.contains('Home').should('have.class', 'active');
-    cy.contains('About').should('not.have.class', 'active');
+    cy.contains(/home/i).should('have.class', 'link-active');
+    cy.contains(/about/i).should('not.have.class', 'link-active');
 
-    cy.contains('About').click();
+    cy.contains(/about/i).click();
 
-    cy.contains('Home').should('not.have.class', 'active');
-    cy.contains('About').should('have.class', 'active');
+    cy.contains(/home/i).should('not.have.class', 'link-active');
+    cy.contains(/about/i).should('have.class', 'link-active');
 
-    // This doesn't add coverage - why?
-    // cy.contains('This is the about page').should('be.visible');
+    cy.contains('This is the about page').should('be.visible');
     cy.url().should('include', '/about');
   });
 
